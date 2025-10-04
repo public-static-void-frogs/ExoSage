@@ -54,7 +54,7 @@ export const parseCsv = (file: File): Promise<AlignedData[]> => {
 
           const alignedData = allRows.map((points) => {
             const x = points.map((p) => p.x);
-            const y = points.map((p) => (p.y !== null ? p.y : NaN));
+            const y = points.map((p) => (p.y !== null ? p.y : 0));
             return [x, y] as [number[], (number | null)[]];
           });
 
