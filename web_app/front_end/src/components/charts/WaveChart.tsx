@@ -28,8 +28,10 @@ export const WaveChart = ({
         label: yLabel ?? "Wave Data",
         stroke: color ?? "white",
         width: 1,
+        value: (u, v) => (v == null || v == 0 ? "0" : v.toExponential(9)),
       },
     ],
+    axes: [{ show: false }, { show: false }],
   };
 
   const chartRef = useChart(data, CHART_OPTIONS);
