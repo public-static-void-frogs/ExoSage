@@ -6,5 +6,5 @@ export type Prediction = {
     | "FALSE POSITIVE"
     | "TRUE NEGATIVE"
     | "PLANET"
-    | "NO PLANET";
+    | "NOT PLANET";
 };

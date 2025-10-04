@@ -20,7 +20,7 @@ export const WaveChart = ({
   const CHART_OPTIONS: Options = {
     title: title || "Wave Chart",
     width: 800,
-    height: 400,
+    height: 300,
     scales: { x: { time: false } },
     series: [
       { label: xLabel ?? "Index" },
