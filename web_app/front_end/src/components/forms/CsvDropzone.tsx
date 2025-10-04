@@ -48,7 +48,7 @@ export const CsvDropzone = () => {
       <Dropzone
         accept={{ "text/csv": [".csv"] }}
         maxFiles={1}
-        maxSize={1024 * 1024 * 10}
+        maxSize={1024 * 1024 * 100}
         minSize={0}
         onDrop={handleDrop}
         onError={console.error}
