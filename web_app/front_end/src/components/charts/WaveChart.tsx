@@ -3,25 +3,35 @@ import { AlignedData, Options } from "uplot";
 import "uplot/dist/uPlot.min.css";
 
 interface CsvChartProps {
+  title: string;
   data: AlignedData;
+  xLabel?: string;
+  yLabel?: string;
+  color?: string;
 }
 
-const CHART_OPTIONS: Options = {
-  title: "CSV Data Chart",
-  width: 800,
-  height: 400,
-  scales: { x: { time: false } },
-  series: [
-    { label: "Index" },
-    {
-      label: "Wave Data",
-      stroke: "white",
-      width: 1,
-    },
-  ],
-};
+export const WaveChart = ({
+  data,
+  title,
+  xLabel,
+  yLabel,
+  color,
+}: CsvChartProps) => {
+  const CHART_OPTIONS: Options = {
+    title: title || "Wave Chart",
+    width: 800,
+    height: 400,
+    scales: { x: { time: false } },
+    series: [
+      { label: xLabel ?? "Index" },
+      {
+        label: yLabel ?? "Wave Data",
+        stroke: color ?? "white",
+        width: 1,
+      },
+    ],
+  };
 
-export const WaveChart = ({ data }: CsvChartProps) => {
   const chartRef = useChart(data, CHART_OPTIONS);
 
   return (

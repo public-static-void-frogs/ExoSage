@@ -1,4 +1,4 @@
 export type Prediction = {
   label: string;
-  prediction: string;
+  prediction: "CONFIRMED" | "CANDIDATE" | "FALSE POSITIVE" | "TRUE NEGATIVE";
 };
