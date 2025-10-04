@@ -1,26 +1,35 @@
 "use client";
+import { useDataContext } from "@/app/context/DataContext";
+import { parseCsv } from "@/app/utils/parse-csv";
 import { sendCsvData } from "@/lib/api";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Dropzone, DropzoneContent, DropzoneEmptyState } from "../ui/dropzone";
 
 export const CsvDropzone = () => {
   const [file, setFile] = useState<File | undefined>();
+  const router = useRouter();
+  const { setCsvData, setPredictionData } = useDataContext();
 
   const mutation = useMutation({
     mutationFn: (csvFile: File) => sendCsvData(csvFile),
-    onSuccess: (data) => {
-      console.log("Success:", data);
+    onSuccess: (response) => {
+      console.log("Success:", response);
+      setPredictionData(response.data);
+      router.push("/result");
     },
     onError: (error) => {
       console.error("Error:", error);
     },
   });
 
-  const handleDrop = (files: File[]) => {
+  const handleDrop = async (files: File[]) => {
     if (files.length > 0) {
       setFile(files[0]);
+      const parsedData = await parseCsv(files[0]);
+      setCsvData(parsedData);
     }
   };
 

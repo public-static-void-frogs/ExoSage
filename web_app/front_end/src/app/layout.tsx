@@ -1,7 +1,9 @@
+import { Background } from "@/components/layout/Background";
+import Providers from "@/lib/providers/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 import "./globals.css";
-import Providers from "@/lib/providers/Providers";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
@@ -16,10 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/uplot@1.6.24/dist/uPlot.min.css"
+        />
+      </Head>
       <body
         className={`${inter.variable} antialiased dark px-3 md:px-6 sm:px-4 py-1`}
       >
         <Providers>{children}</Providers>
+        <Background />
       </body>
     </html>
   );
