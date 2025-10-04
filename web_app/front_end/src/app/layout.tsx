@@ -25,7 +25,7 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${inter.variable} antialiased dark px-3 md:px-6 sm:px-4 py-1`}
+        className={`${inter.variable} antialiased dark px-3 md:px-6 sm:px-4 py-1 h-full`}
       >
         <Providers>{children}</Providers>
         <Background />

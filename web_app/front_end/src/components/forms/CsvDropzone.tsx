@@ -42,7 +42,7 @@ export const CsvDropzone = () => {
 
   return (
     <form
-      className="w-full flex flex-col gap-4 items-center"
+      className="w-full flex flex-col gap-4 items-center max-w-3xl"
       onSubmit={handleSubmit}
     >
       <Dropzone
@@ -58,7 +58,7 @@ export const CsvDropzone = () => {
         <DropzoneContent />
       </Dropzone>
       <Button
-        className="w-full font-bold h-14 max-w-lg rounded-lg"
+        className="w-full font-bold h-14 rounded-lg"
         size="lg"
         variant={file ? "default" : "outline"}
         type="submit"

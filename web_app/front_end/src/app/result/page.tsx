@@ -1,13 +1,22 @@
 "use client";
 
 import { ResultCard } from "@/components/ui/ResultCard";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useDataContext } from "../context/DataContext";
 
 export default function ResultPage() {
+  const router = useRouter();
   const { csvData, predictionData } = useDataContext();
 
+  useEffect(() => {
+    if (!csvData || !predictionData) {
+      router.push("/");
+    }
+  }, [csvData, predictionData, router]);
+
   if (!csvData || !predictionData) {
-    return <div>No data available. Please upload a CSV file first.</div>;
+    return null;
   }
 
   const mergedData = csvData.map((dataRow, index) => ({
