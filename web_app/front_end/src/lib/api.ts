@@ -14,7 +14,7 @@ export const sendCsvData = async (csvFile: File): Promise<DataResponse> => {
   const formData = new FormData();
   formData.append("input_dataset", csvFile);
 
-  const response = await apiClient.post<DataResponse>("/", formData, {
+  const response = await apiClient.post<DataResponse>("/inference", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 
