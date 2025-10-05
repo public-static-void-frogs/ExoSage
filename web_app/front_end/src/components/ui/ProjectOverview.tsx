@@ -1,11 +1,11 @@
 "use client";
+import { ArrowUp, Download } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./button";
-import { ArrowUp, Download } from "lucide-react";
 
 export const ProjectOverview = () => {
   return (
-    <div className="flex flex-col max-w-[1152px]">
+    <div className="flex flex-col max-w-[1152px] w-full">
       <Section1 />
       <Section2 />
       <Section3 />
@@ -15,8 +15,8 @@ export const ProjectOverview = () => {
 
 export const Section1 = () => {
   return (
-    <div className="flex flex-col gap-6 min-h-screen items-center justify-center">
-      <h2 className="font-bold h-16 text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
+    <div className="flex flex-col gap-6 min-h-screen items-center justify-center w-full">
+      <h2 className="font-bold text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
         n*sa pipeline problem
       </h2>
 
@@ -53,8 +53,8 @@ export const Section1 = () => {
 
 export const Section2 = () => {
   return (
-    <div className="flex flex-col gap-6 min-h-screen items-center justify-center">
-      <h2 className="font-bold h-16 text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
+    <div className="flex flex-col gap-6 min-h-screen items-center justify-center w-full">
+      <h2 className="font-bold text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
         our solution
       </h2>
 
@@ -96,24 +96,19 @@ export const Section3 = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 min-h-screen items-center justify-center">
+    <div className="flex flex-col gap-10 min-h-screen items-center justify-center w-full">
       <h2 className="font-bold h-16 text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
         try it yourself
       </h2>
-      <div className="w-full flex flex-row gap-4">
+      <div className="w-full flex flex-row gap-4 md:flex-nowrap flex-wrap">
         <CsvLinkCard
-          title="small dataset"
-          description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur deleniti excepturi pariatur rerum alias, at enim doloremque maxime id non"
+          title="Sample With IDs"
+          description="This dataset contains 10 examples of light curves with identifiers. The light curves represent both planet and not planet cases."
           link=""
         />
         <CsvLinkCard
-          title="medium dataset"
-          description="deleniti excepturi pariatur rerum alias, at enim doloremque maxime id non deleniti excepturi pariatur rerum alias, at enim doloremque maxime id non "
-          link=""
-        />
-        <CsvLinkCard
-          title="large dataset"
-          description=" culpa molestias porro magnam nemo deserunt dolor eveniet ipsam et. deleniti excepturi pariatur rerum alias, at enim doloremque maxime id non"
+          title="Sample Without IDs"
+          description="This dataset contains 10 examples of light curves without identifiers. The light curves represent both planet and not planet cases."
           link=""
         />
       </div>
