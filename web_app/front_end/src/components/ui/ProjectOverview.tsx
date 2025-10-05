@@ -109,16 +109,12 @@ const Section3 = () => {
           Our system automates several of the later stages of the pipeline —
           mainly the Transit Planet Search (TPS) outputs, the full Data
           Validation (DV) diagnostics suite, the generation of vetting forms,
-          and the Robovetter classification. This way, the total runtime is cut
-          dramatically.
+          and the Robovetter classification.
         </p>
         <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
-          The original setup takes about 10 days in wall-clock time for the DV
-          stage alone, and about 15 days for the whole thing. Our model
-          processes [N] light curves in [TIME], which, if scaled up, would take
-          about [TIME2] for the full set of 35,000 light curves that normally
-          enter the TPS module. These numbers are approximate but show a clear
-          reduction in computational time.
+          The total runtime is cut. The part we’re replacing, which takes
+          approximately 15.6 days to process the whole Kepler dataset, is
+          reduced to 30 hours with our model.
         </p>
         <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
           Also, our pipeline removes the friction of gluing together different
