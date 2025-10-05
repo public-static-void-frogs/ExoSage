@@ -69,10 +69,7 @@ export const CsvDropzone = () => {
 
       {mutation.isError && (
         <p className="text-red-500 text-sm">
-          Error:{" "}
-          {mutation.error instanceof Error
-            ? mutation.error.message
-            : "Failed to process file"}
+          An unexpected error occurred. Please try again later.
         </p>
       )}
     </form>

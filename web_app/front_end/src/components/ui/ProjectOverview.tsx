@@ -9,15 +9,44 @@ export const ProjectOverview = () => {
       <Section1 />
       <Section2 />
       <Section3 />
+      <Section4 />
     </div>
   );
 };
 
-export const Section1 = () => {
+const Section1 = () => {
   return (
     <div className="flex flex-col gap-6 min-h-screen items-center justify-center w-full">
       <h2 className="font-bold text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
-        n*sa pipeline problem
+        Transit event
+      </h2>
+
+      <Image
+        src="/transitive_event.png"
+        alt="NASA Pipeline"
+        width={1200}
+        height={400}
+        className="w-full max-w-3xl h-auto"
+      />
+
+      <div className="flex flex-col gap-2">
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          Distant stars are observed continuously. If a planet in orbit around
+          that star happens to cross the line between the star and the observer,
+          it blocks a small fraction of the starlight for a short period. This
+          way a tiny, periodic decrease in the star’s brightness is produced.
+          Such an event is called transit.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const Section2 = () => {
+  return (
+    <div className="flex flex-col gap-6 min-h-screen items-center justify-center w-full">
+      <h2 className="font-bold text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
+        Nasa pipeline problem
       </h2>
 
       <Image
@@ -28,34 +57,43 @@ export const Section1 = () => {
         className="w-full h-auto"
       />
 
-      <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
-        There are a few big issues with the current NASA pipeline. First, it’s
-        built from a bunch of interconnected modules, each written in a
-        different language — mainly Java, MATLAB, and C — and all run
-        separately. The Java code handles automation and data management, while
-        the scientific and numerical parts are written mostly in MATLAB, with
-        some low-level routines in C. NASA’s own team even mentions that it’s
-        not expected that anyone outside their environment can build or run it,
-        because of licensing restrictions, dependencies, and other
-        complications. That makes it difficult to maintain, even for experienced
-        users, and nearly impossible for new researchers trying to get started.
-        Second, it’s very slow. Based on NASA’s public reports, the full Kepler
-        dataset takes around 45–60 days to process end-to-end. That’s an
-        estimate we made quickly from their GitHub documentation and may not be
-        completely accurate, but it gives a reasonable sense of scale. Third, it
-        depends heavily on proprietary tools like MATLAB. While that’s fine for
-        internal use, it limits reproducibility, automation, and the ability to
-        run the pipeline easily in open or distributed environments.
-      </p>
+      <div className="flex flex-col gap-2">
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          The current NASA pipeline has a couple of drawbacks:
+        </p>
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          - <strong>It is difficult to maintain</strong>. It consists of a bunch
+          of interconnected modules, each written in a different language —
+          mainly Java, MATLAB, and C — and each runs separately. The Java code
+          handles automation and data management, while the scientific and
+          numerical parts are written mostly in MATLAB, with some low-level
+          routines in C. According to NASA’s own team, it’s not expected that
+          anyone outside their environment can build or run it due to licensing
+          restrictions, dependencies, and other complications.
+        </p>
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          - <strong>It is very slow</strong>. Based on NASA’s public reports,
+          the full Kepler dataset takes around 45–60 days to process end-to-end.
+          That’s an estimate we made quickly from their GitHub documentation and
+          may not be completely accurate, but it gives a reasonable sense of
+          scale.
+        </p>
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          - <strong>It is heavily dependent</strong> on proprietary tools like
+          MATLAB. It works fine for internal use, however, it limits
+          reproducibility, automation, and the ability to run the pipeline
+          easily in open or distributed environments.
+        </p>
+      </div>
     </div>
   );
 };
 
-export const Section2 = () => {
+const Section3 = () => {
   return (
     <div className="flex flex-col gap-6 min-h-screen items-center justify-center w-full">
       <h2 className="font-bold text-4xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 uppercase">
-        our solution
+        Our solution
       </h2>
 
       <Image
@@ -66,27 +104,35 @@ export const Section2 = () => {
         className="w-full h-auto"
       />
 
-      <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
-        Our system automates several of the later stages of the pipeline —
-        mainly the Transit Planet Search (TPS) outputs, the full Data Validation
-        (DV) diagnostics suite, the generation of vetting forms, and the
-        Robovetter classification. This cuts the total runtime dramatically. The
-        original setup takes about 10 days in wall-clock time for the DV stage
-        alone, and about 15 days for the whole thing. Our model processes [N]{" "}
-        light curves in [TIME], which, if scaled up, would take about [TIME2]{" "}
-        for the full set of 35,000 light curves that normally enter the TPS
-        module. These numbers are approximate but show a clear reduction in
-        computational time. Our pipeline also removes the friction of gluing
-        together different components. Everything runs in a single, consistent
-        environment without the Java–MATLAB–C dependency chain, making it faster
-        to deploy, easier to maintain, and more accessible for new scientists
-        joining the project.
-      </p>
+      <div className="flex flex-col gap-2">
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          Our system automates several of the later stages of the pipeline —
+          mainly the Transit Planet Search (TPS) outputs, the full Data
+          Validation (DV) diagnostics suite, the generation of vetting forms,
+          and the Robovetter classification. This way, the total runtime is cut
+          dramatically.
+        </p>
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          The original setup takes about 10 days in wall-clock time for the DV
+          stage alone, and about 15 days for the whole thing. Our model
+          processes [N] light curves in [TIME], which, if scaled up, would take
+          about [TIME2] for the full set of 35,000 light curves that normally
+          enter the TPS module. These numbers are approximate but show a clear
+          reduction in computational time.
+        </p>
+        <p className="text-neutral-300 text-base md:text-lg leading-relaxed">
+          Also, our pipeline removes the friction of gluing together different
+          components. Everything runs in a single, consistent environment
+          without the Java–MATLAB–C dependency chain, making it faster to
+          deploy, easier to maintain, and more accessible for new scientists
+          joining the project.
+        </p>
+      </div>
     </div>
   );
 };
 
-export const Section3 = () => {
+const Section4 = () => {
   const scrollToSubmit = () => {
     window.scrollTo({
       top: 0,
