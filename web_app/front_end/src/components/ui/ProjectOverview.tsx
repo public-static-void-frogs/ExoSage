@@ -104,12 +104,12 @@ export const Section3 = () => {
         <CsvLinkCard
           title="Sample With IDs"
           description="This dataset contains 10 examples of light curves with identifiers. The light curves represent both planet and not planet cases."
-          link=""
+          link="/sample_with_ids.csv"
         />
         <CsvLinkCard
           title="Sample Without IDs"
           description="This dataset contains 10 examples of light curves without identifiers. The light curves represent both planet and not planet cases."
-          link=""
+          link="/sample_without_ids.csv"
         />
       </div>
       <Button
@@ -139,7 +139,11 @@ const CsvLinkCard = ({
       </p>
       <p>{description}</p>
       <Button asChild>
-        <a className="flex flex-row gap-2 items-center mt-auto" href={link}>
+        <a
+          className="flex flex-row gap-2 items-center mt-auto"
+          href={link}
+          download
+        >
           Download CSV sample <Download />
         </a>
       </Button>
