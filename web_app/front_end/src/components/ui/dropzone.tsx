@@ -1,15 +1,16 @@
 "use client";
 
-import { UploadIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { FlaskConicalIcon, UploadIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { createContext, useContext } from "react";
 import type { DropEvent, DropzoneOptions, FileRejection } from "react-dropzone";
 import { useDropzone } from "react-dropzone";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 type DropzoneContextType = {
   src?: File[];
+  runDemo?: () => void;
   accept?: DropzoneOptions["accept"];
   maxSize?: DropzoneOptions["maxSize"];
   minSize?: DropzoneOptions["minSize"];
@@ -36,6 +37,7 @@ const DropzoneContext = createContext<DropzoneContextType | undefined>(
 export type DropzoneProps = Omit<DropzoneOptions, "onDrop"> & {
   src?: File[];
   className?: string;
+  runDemo?: () => void;
   onDrop?: (
     acceptedFiles: File[],
     fileRejections: FileRejection[],
@@ -55,6 +57,7 @@ export const Dropzone = ({
   src,
   className,
   children,
+  runDemo,
   ...props
 }: DropzoneProps) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -79,7 +82,7 @@ export const Dropzone = ({
   return (
     <DropzoneContext.Provider
       key={JSON.stringify(src)}
-      value={{ src, accept, maxSize, minSize, maxFiles }}
+      value={{ src, runDemo, accept, maxSize, minSize, maxFiles }}
     >
       <Button
         className={cn(
@@ -158,7 +161,13 @@ export const DropzoneEmptyState = ({
   children,
   className,
 }: DropzoneEmptyStateProps) => {
-  const { src, accept, maxSize, minSize, maxFiles } = useDropzoneContext();
+  const { src, runDemo, accept, maxSize, minSize, maxFiles } =
+    useDropzoneContext();
+
+  const handleDemoClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    runDemo?.();
+  };
 
   if (src) {
     return null;
@@ -185,12 +194,21 @@ export const DropzoneEmptyState = ({
 
   return (
     <div className={cn("flex flex-col items-center justify-center", className)}>
-      <div className="flex size-8 items-center justify-center rounded-md bg-muted text-muted-foreground">
-        <UploadIcon size={16} />
+      <div className="flex gap-2 items-center mb-2">
+        <div className="flex h-8 px-3 gap-2 items-center justify-center rounded-md bg-muted text-muted-foreground">
+          Upload {maxFiles === 1 ? "a file" : "files"}
+          <UploadIcon size={16} />
+        </div>
+        <div>or try</div>
+        <Button
+          size="sm"
+          className="cursor-pointer"
+          onClick={(e) => handleDemoClick(e)}
+        >
+          Demo
+          <FlaskConicalIcon size={16} />
+        </Button>
       </div>
-      <p className="my-2 w-full truncate text-wrap font-medium text-sm">
-        Upload {maxFiles === 1 ? "a file" : "files"}
-      </p>
       <p className="w-full truncate text-wrap text-muted-foreground text-xs">
         Drag and drop or click to upload
       </p>

@@ -40,6 +40,18 @@ export const CsvDropzone = () => {
     }
   };
 
+  const runDemo = async () => {
+    const demoFileResponse = await fetch("/sample_with_ids.csv");
+    const demoFileBlob = await demoFileResponse.blob();
+    const demoFile = new File([demoFileBlob], "sample_with_ids.csv", {
+      type: "text/csv",
+    });
+    const parsedData = await parseCsv(demoFile);
+    setCsvData(parsedData);
+    setFile(demoFile);
+    mutation.mutate(demoFile);
+  };
+
   return (
     <form
       className="w-full flex flex-col gap-4 items-center max-w-3xl"
@@ -50,6 +62,7 @@ export const CsvDropzone = () => {
         maxFiles={1}
         maxSize={1024 * 1024 * 100}
         minSize={0}
+        runDemo={runDemo}
         onDrop={handleDrop}
         onError={console.error}
         src={file ? [file] : undefined}
