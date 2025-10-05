@@ -1,4 +1,3 @@
-import { Background } from "@/components/layout/Background";
 import Providers from "@/lib/providers/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -28,7 +27,6 @@ export default function RootLayout({
         className={`${inter.variable} antialiased dark px-3 md:px-6 sm:px-4 py-1 h-full`}
       >
         <Providers>{children}</Providers>
-        <Background />
       </body>
     </html>
   );

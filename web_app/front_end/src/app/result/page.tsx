@@ -32,24 +32,19 @@ export default function ResultPage() {
             Prediction Results
           </h1>
           <span className="text-white">
-            <strong className="text-green-500">PLANET</strong>: This label
-            indicates that the candidate object is classified as an{" "}
-            <em>exoplanet</em>. Exoplanets are planets that orbit stars outside
-            our Solar System. They are identified through detection methods such
-            as the transit method (a dip in starlight when a planet passes in
-            front of its star) or radial velocity (the star’s wobble due to
-            gravitational pull). If the response is <strong>PLANET</strong>, it
-            means the observed signal is consistent with a genuine planetary
-            body.
+            <strong className="text-green-400">PLANET</strong>: This label
+            indicates that the detected transit event is highly likely to be
+            caused by a real <em>exoplanet</em> orbiting a star. Such events are
+            consistent with genuine planetary transits rather than noise or
+            other astrophysical effects.
           </span>
           <span className="text-white">
-            <strong className="text-gray-500">NOT PLANET</strong>: This label
-            means that the candidate signal does not correspond to a true
-            exoplanet. Instead, it may be explained by other astrophysical
-            phenomena, such as binary stars, background eclipsing systems,
-            stellar variability, or even instrumental noise. If the response is{" "}
-            <strong>NOT PLANET</strong>, the data suggests the signal cannot be
-            reliably attributed to a planetary body.
+            <strong className="text-gray-400">NOT PLANET</strong>: This label
+            indicates that the detected signal is unlikely to represent a true
+            exoplanet. It is more consistent with other causes, such as
+            instrumental noise, stellar activity, cosmic rays, or processing
+            artifacts. <strong>NOT PLANET</strong> may also indicate the absence
+            of a true transit event.
           </span>
         </div>
         {mergedData.map((x) => (
