@@ -7,8 +7,7 @@ So as to address the challenge we developed an ml-powered web application. We tr
 ### data pipelines
 - this module contains pipelines used for data collection and filtration.
 ### ml
-- **preprocess:** this module contains code for preparation and preprocess for training in this module.
-- **model:** this module contains code used for model training along with model architescture.
+- this module contains code used for model training along with model architescture.
 ### web_app
 - **back_end:** this module contains code used for inference and back-end part.
 - **front_end:** this module contains code of front-end part of the application.
